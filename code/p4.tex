@@ -1,0 +1,48 @@
+    \hypertarget{ux5bf9ux8868ux8fbeux5f0fux5728ux591aux4e2aux70b9ux4e0aux6c42ux503cux4e0dux4f7fux7528ux5faaux73af}{%
+\subsubsection{对表达式在多个点上求值（不使用循环）}\label{ux5bf9ux8868ux8fbeux5f0fux5728ux591aux4e2aux70b9ux4e0aux6c42ux503cux4e0dux4f7fux7528ux5faaux73af}}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{o}{*}
+\PY{c+c1}{\PYZsh{} 定义符号xyz}
+\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{z} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x y z}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)} 
+\PY{c+c1}{\PYZsh{} 定义表达式}
+\PY{n}{expr} \PY{o}{=} \PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\PY{c+c1}{\PYZsh{} 定义函数，输出结果为numpy的数组类型}
+\PY{n}{f} \PY{o}{=} \PY{n}{lambdify}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{expr}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{numpy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{f}\PY{p}{(}\PY{n}{a}\PY{p}{)} 
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+array([ 0.        ,  0.84147098,  0.90929743,  0.14112001, -0.7568025 ,
+       -0.95892427, -0.2794155 ,  0.6569866 ,  0.98935825,  0.41211849])
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 输出结果为math库的类型}
+\PY{n}{f} \PY{o}{=} \PY{n}{lambdify}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{expr}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{math}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{f}\PY{p}{(}\PY{l+m+mf}{0.1}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+0.09983341664682815
+\end{Verbatim}
+\end{tcolorbox}

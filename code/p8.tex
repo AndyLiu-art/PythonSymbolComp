@@ -1,0 +1,41 @@
+    \hypertarget{ux6784ux9020ux5173ux4e8eux67d0ux4e2aux7279ux5b9aux53d8ux91cfux7684ux591aux9879ux5f0f}{%
+\subsubsection{构造关于某个特定变量的多项式}\label{ux6784ux9020ux5173ux4e8eux67d0ux4e2aux7279ux5b9aux53d8ux91cfux7684ux591aux9879ux5f0f}}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{o}{*}
+\PY{c+c1}{\PYZsh{} 定义符号}
+\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{z} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x y z}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 定义表达式}
+\PY{n}{expr} \PY{o}{=} \PY{n}{x}\PY{o}{*}\PY{n}{y} \PY{o}{+} \PY{n}{x} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{\PYZhy{}} \PY{n}{z}\PY{o}{*}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}
+\PY{n}{expr}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{2}{}
+    
+    $\displaystyle x^{3} - x^{2} z + 2 x^{2} + x y + x - 3$
+
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 构造关于x的多项式}
+\PY{n}{collected\PYZus{}expr} \PY{o}{=} \PY{n}{collect}\PY{p}{(}\PY{n}{expr}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+\PY{n}{collected\PYZus{}expr}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{3}{}
+    
+    $\displaystyle x^{3} + x^{2} \cdot \left(2 - z\right) + x \left(y + 1\right) - 3$
